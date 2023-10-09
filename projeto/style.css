@@ -1,0 +1,232 @@
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.header {
+    background-color: #026aa7;
+    color: #fff;
+    width: 100%;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5em;
+    margin: 0;
+    flex: 1;
+}
+
+.btn {
+    background-color: #5aac44;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    padding: 8px 16px;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s;
+}
+
+.btn:hover {
+    background-color: #4a9641;
+}
+
+.main {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+}
+
+.colunas {
+    display: flex;
+    gap: 20px;
+}
+
+.coluna {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: 0 20px;
+    padding: 20px;
+    color: #172b4d;
+    transition: transform 0.2s;
+}
+
+.coluna:hover {
+    transform: scale(1.02);
+}
+
+h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.tarefas {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tarefa {
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    margin-bottom: 12px;
+    padding: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: background-color 0.2s;
+}
+
+.tarefa:hover {
+    background-color: #e8e8e8;
+}
+
+.tarefa .acoes {
+    display: none;
+    justify-content: flex-end;
+}
+
+.tarefa:hover .acoes {
+    display: flex;
+}
+
+.tarefa-editar textarea {
+    width: 100%;
+    height: 80px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+.tarefa-editar button {
+    background-color: #5aac44;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    padding: 8px 16px;
+    transition: background-color 0.2s;
+}
+
+.tarefa-editar button:hover {
+    background-color: #4a9641;
+}
+
+.tarefa-editar {
+    display: none;
+}
+
+.tarefa-editar.mostrando {
+    display: block;
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.tema-escuro .header {
+    background-color: #34495e;
+}
+
+.tema-escuro .btn {
+    background-color: #2980b9;
+}
+
+.tema-escuro .coluna {
+    background-color: #333;
+    color: #fff;
+}
+
+.tema-escuro .tarefa {
+    background-color: #444;
+    color: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.tema-escuro .tarefa:hover {
+    background-color: #555;
+}
+
+.tema-escuro .tarefa-editar {
+    background-color: #444;
+    color: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.tema-escuro .tarefa-editar textarea {
+    background-color: #555;
+    color: #fff;
+    border: 1px solid #ccc;
+}
+
+.tema-escuro .tarefa-editar button {
+    background-color: #5aac44;
+    color: #fff;
+    border: none;
+}
+
+.tema-escuro .tarefa-editar button:hover {
+    background-color: #4a9641;
+}
+
+@media screen and (max-width: 768px) {
+    .coluna {
+        width: 80%;
+        margin: 20px 0;
+    }
+
+    .form {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .label,
+    .input,
+    .btn {
+        width: 100%;
+    }
+
+    .tarefa {
+        width: calc(100% - 32px);
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .coluna {
+        width: 100%;
+    }
+
+    .tarefa {
+        width: calc(100% - 32px);
+    }
+}
