@@ -274,26 +274,6 @@ class Comentario{
 
 //-------------main------------
 
-// Adicione a funcionalidade de arrastar e soltar usando SortableJS
-let sortableColunas = new Sortable(document.getElementById('raiz'), {
-    group: 'colunas',
-    draggable: '.coluna',
-    animation: 150,
-    handle: '.coluna-header',
-    onEnd: function(evt) {
-        console.log('Coluna movida:', evt.from, '=>', evt.to);
-    }
-});
-
-let sortableCartoes = new Sortable(raiz, {
-    group: 'cartoes',
-    draggable: '.cartao',
-    animation: 150,
-    onEnd: function(evt) {
-        console.log('Cartão movido:', evt.from, '=>', evt.to);
-    }
-});
-
 let adicionarNovaListaInput = document.getElementById("adicionarNovaListaInput");
 let adicionarNovaListaBotao = document.getElementById("adicionarNovaListaBotao");
 
@@ -332,7 +312,7 @@ colunas.forEach(coluna => {
     new Sortable(coluna.querySelector('ul'), {
         group: 'tarefas',
         animation: 150,
-        draggable: '.cartao',
+        draggable: '.tarefa',
         onEnd: function(evt) {
             console.log(evt.from, '=>', evt.to);
         }
@@ -340,17 +320,6 @@ colunas.forEach(coluna => {
 });
 
 
-let adicionarCartaoBotao = document.getElementById("adicionarCartao");
-
-function adicionarCartao(event) {
-    event.preventDefault();
-
-    let novoCartao = new Cartao("Novo Cartão", listaDeTarefas1.div, listaDeTarefas1);
-    listaDeTarefas1.arrayDeCartoes.push(novoCartao);
-    listaDeTarefas1.div.insertBefore(novoCartao.cartao, listaDeTarefas1.div.lastElementChild);
-}
-
-adicionarCartaoBotao.addEventListener('click', adicionarCartao);
 
 
 

@@ -10,23 +10,13 @@
 </head>
 
 <body>
-    
+    <div class="cartao" draggable="true">
     <div id="adicionarNovaListaDiv">
         <input id="adicionarNovaListaInput" class="comentario">
         <button id="adicionarNovaListaBotao" class="btn-salvar">Adicionar nova lista de tarefas</button>
     </div>
     
-    <div id="raiz" class="listas">
-        <!-- Adicionando uma coluna arrastável -->
-        <div class="coluna" draggable="true">
-            <div class="coluna-header">Tarefa em Progresso</div>
-            <!-- Adicionando cartões arrastáveis -->
-            <div class="cartao" draggable="true">Cartão 1</div>
-            <div class="cartao" draggable="true">Cartão 2</div>
-            <button id="adicionarCartao">Adicionar Cartão</button>
-
-        </div>
-        <!-- Adicione quantas colunas e cartões desejar -->
+    <div id="raiz" class="listas"></div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
