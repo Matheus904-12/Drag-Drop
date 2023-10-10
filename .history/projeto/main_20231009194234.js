@@ -1,9 +1,5 @@
 let raiz = document.getElementById("raiz");
 
-raiz.addEventListener('dragstart', iniciarArrasto);
-raiz.addEventListener('dragover', permitirSoltar);
-raiz.addEventListener('drop', soltarTarefa);
-
 class ListaDeTarefas{
     constructor(local, titulo = "lista de tarefas"){
         this.local = local;
@@ -14,10 +10,8 @@ class ListaDeTarefas{
 
     adicionarTarefa(){
         let texto = this.input.value;
-    let cartao = new Cartao(texto, this.div, this);
-    this.arrayDeCartoes.push(cartao);
-    this.div.insertBefore(cartao.cartao, this.div.lastElementChild);
-}
+        this.arrayDeCartoes.push(new Cartao(texto, this.div, this));
+    }
 
     renderizar(){
         this.criarElementoListaDeTarefas();
@@ -49,30 +43,6 @@ class ListaDeTarefas{
         this.elementoListaDeTarefas.append(this.div);
         this.elementoListaDeTarefas.classList.add("listaDeTarefas");
     }
-
-    // Adicione esta função para tornar os cartões arrastáveis
-    tornarCartoesArrastaveis() {
-        let cartoes = this.div.querySelectorAll('.cartao');
-
-        cartoes.forEach(cartao => {
-            cartao.draggable = true;
-
-            cartao.addEventListener('dragstart', (e) => {
-                e.dataTransfer.setData('text/plain', null);
-                this.cartaoArrastado = cartao;
-            });
-
-            cartao.addEventListener('dragover', (e) => {
-                e.preventDefault();
-            });
-
-            cartao.addEventListener('drop', (e) => {
-                if (this.cartaoArrastado !== cartao) {
-                    this.div.insertBefore(this.cartaoArrastado, cartao);
-                }
-            });
-        });
-    }
 }
 
 class Cartao{
@@ -87,7 +57,6 @@ class Cartao{
         this.renderizar();
     }
 
-    
     renderizar(){
         this.cartao = document.createElement('div');
         this.cartao.classList.add("cartao");
@@ -183,8 +152,6 @@ class Cartao{
     }
 }
 
-
-
 class TextoEditavel{
     constructor(texto, local, cartao, propriedade, tipoDeEntrada){
         this.texto = texto;
@@ -274,26 +241,6 @@ class Comentario{
 
 //-------------main------------
 
-// Adicione a funcionalidade de arrastar e soltar usando SortableJS
-let sortableColunas = new Sortable(document.getElementById('raiz'), {
-    group: 'colunas',
-    draggable: '.coluna',
-    animation: 150,
-    handle: '.coluna-header',
-    onEnd: function(evt) {
-        console.log('Coluna movida:', evt.from, '=>', evt.to);
-    }
-});
-
-let sortableCartoes = new Sortable(raiz, {
-    group: 'cartoes',
-    draggable: '.cartao',
-    animation: 150,
-    onEnd: function(evt) {
-        console.log('Cartão movido:', evt.from, '=>', evt.to);
-    }
-});
-
 let adicionarNovaListaInput = document.getElementById("adicionarNovaListaInput");
 let adicionarNovaListaBotao = document.getElementById("adicionarNovaListaBotao");
 
@@ -303,10 +250,13 @@ adicionarNovaListaBotao.addEventListener('click', () => {
         adicionarNovaListaInput.value = "";
     }
 });
-
+let root = document.getElementById("root");
 let listaDeTarefas1 = new ListaDeTarefas(raiz);
 let listaDeTarefas2 = new ListaDeTarefas(raiz);
 let listaDeTarefas3 = new ListaDeTarefas(raiz);
+
+listaDeTarefas1.input.value = "asdasds";
+listaDeTarefas1.adicionarTarefa();
 
 let dragged; // Referência ao elemento arrastado
 
@@ -321,33 +271,12 @@ function permitirSoltar(event) {
 
 function soltarTarefa(event) {
     event.preventDefault();
-    if (event.target.classList.contains("cartao")) {
+    if (event.target.classList.contains("card")) {
         event.target.appendChild(dragged);
     }
 }
 
-
-// Adicione a funcionalidade de arrastar e soltar usando SortableJS
-colunas.forEach(coluna => {
-    new Sortable(coluna.querySelector('ul'), {
-        group: 'tarefas',
-        animation: 150,
-        draggable: '.cartao',
-        onEnd: function(evt) {
-            console.log(evt.from, '=>', evt.to);
-        }
-    });
-});
-
-
-let adicionarCartaoBotao = document.getElementById("adicionarCartao");
-
-function adicionarCartao(event) {
-    event.preventDefault();
-
-    let novoCartao = new Cartao("Novo Cartão", listaDeTarefas1.div, listaDeTarefas1);
-    listaDeTarefas1.arrayDeCartoes.push(novoCartao);
-    listaDeTarefas1.div.insertBefore(novoCartao.cartao, listaDeTarefas1.div.lastElementChild);
-}
-
-adicionarCartaoBotao.addEventListener('click', adicionarCartao);
+// Adicione os event listeners para arrastar e soltar
+root.addEventListener('dragstart', iniciarArrasto);
+root.addEventListener('dragover', permitirSoltar);
+root.addEventListener('drop', soltarTarefa);

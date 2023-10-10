@@ -340,14 +340,8 @@ colunas.forEach(coluna => {
 });
 
 
-let adicionarCartaoBotao = document.getElementById("adicionarCartao");
 
-function adicionarCartao(event) {
-    event.preventDefault();
 
-    let novoCartao = new Cartao("Novo Cartão", listaDeTarefas1.div, listaDeTarefas1);
-    listaDeTarefas1.arrayDeCartoes.push(novoCartao);
-    listaDeTarefas1.div.insertBefore(novoCartao.cartao, listaDeTarefas1.div.lastElementChild);
-}
 
-adicionarCartaoBotao.addEventListener('click', adicionarCartao);
+
+

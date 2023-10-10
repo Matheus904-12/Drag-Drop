@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Trello</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <h1 class="logo">Meu Trello</h1>
+            <button id="adicionar-cartao" class="btn"><i class="fas fa-plus"></i> Adicionar Cartão</button>
+            <button id="trocar-tema" class="btn"><i class="fas fa-moon"></i> Trocar Tema</button>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="colunas">
+            <div class="coluna" id="fazer">
+                <h2>A fazer</h2>
+                <ul class="tarefas" id="tarefa-fazer"></ul>
+            </div>
+
+            <div class="coluna" id="fazendo">
+                <h2>Fazendo</h2>
+                <ul class="tarefas" id="tarefa-fazendo"></ul>
+            </div>
+
+            <div class="coluna" id="feito">
+                <h2>Feito</h2>
+                <ul class="tarefas" id="tarefa-feito"></ul>
+            </div>
+        </section>
+    </main>
+
+    <form id="adicionar-tarefa" class="form">
+        <input type="text" id="nova-tarefa" name="nova-tarefa" class="input" placeholder="Nova Tarefa">
+        <button type="submit" class="btn"><i class="fas fa-check"></i> Adicionar</button>
+    </form>
+
+    <script src="main.js"></script>
+</body>
+</html>

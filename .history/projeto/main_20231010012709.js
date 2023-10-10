@@ -351,3 +351,8 @@ function adicionarCartao(event) {
 }
 
 adicionarCartaoBotao.addEventListener('click', adicionarCartao);
+
+
+
+
+
